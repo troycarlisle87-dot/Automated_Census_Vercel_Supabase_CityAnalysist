@@ -1,6 +1,6 @@
 "use client" // cusz it's interactive...
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/app/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Badge, Crown, CheckCircle2 } from 'lucide-react'
 import React, { useState } from 'react'
