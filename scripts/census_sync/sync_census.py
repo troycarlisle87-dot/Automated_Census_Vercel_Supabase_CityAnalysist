@@ -15,6 +15,13 @@ def main() -> None:
     "geo_uid": 3521010,
     "year": 2021,
     "population": 656480,
+    "Age_0-14": 0,
+    "Age_15-64": 0,
+    "Age_65": 0,
+    "Age_Average": 0,
+    "householdIncome": 0,
+    "householdIncome_AT": 0,
+    "Age_Median": 0,
     "updated_at": datetime.now(timezone.utc).isoformat(),
 }
 
