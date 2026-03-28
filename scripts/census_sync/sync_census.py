@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timezone
 
+from pycancensus import get_census
 from supabase import create_client, Client
 
 
@@ -10,31 +11,29 @@ def main() -> None:
 
     supabase: Client = create_client(supabase_url, supabase_secret_key)
 
-    # Pretend this block is the census result for now
-    census_result = {
-        "geo_uid": 3521010,
-        "year": 2021,
-        "population": 656480,
-        "Age_0-14": 109315,
-        "Age_15-64": 489245,
-        "Age_65": 119395,
-        "Age_Average": 41.1,
-        "householdIncome": 102000,
-        "householdIncome_AT": 89000,
-        "Age_Median": 40.8,
-    }
+    census_df = get_census(
+        dataset="CA21",
+        regions={"CSD": "3521010"},
+        vectors=["v_CA21_1"],
+        level="CSD",
+        labels="detailed",
+        geo_format=None,
+        api_key=os.environ["CANCENSUS_API_KEY"],
+    )
+
+    first_row = census_df.iloc[0]
 
     row = {
-        "geo_uid": census_result["geo_uid"],
-        "year": census_result["year"],
-        "population": census_result["population"],
-        "Age_0-14": census_result["Age_0-14"],
-        "Age_15-64": census_result["Age_15-64"],
-        "Age_65": census_result["Age_65"],
-        "Age_Average": census_result["Age_Average"],
-        "householdIncome": census_result["householdIncome"],
-        "householdIncome_AT": census_result["householdIncome_AT"],
-        "Age_Median": census_result["Age_Median"],
+        "geo_uid": int(first_row["GeoUID"]),
+        "year": 2021,
+        "population": int(first_row["Population"]),
+        "Age_0-14": 0,
+        "Age_15-64": 0,
+        "Age_65": 0,
+        "Age_Average": 0,
+        "householdIncome": 0,
+        "householdIncome_AT": 0,
+        "Age_Median": 0,
         "updated_at": datetime.now(timezone.utc).isoformat(),
     }
 
