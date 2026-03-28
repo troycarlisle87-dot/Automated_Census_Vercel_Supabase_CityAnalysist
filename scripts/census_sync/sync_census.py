@@ -12,11 +12,11 @@ def main() -> None:
 
     # Temporary test row so we confirm GitHub Actions -> Supabase works
     test_row = {
-        "geo_uid": 3521010,
-        "year": 2021,
-        "population_average": 656480,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-    }
+    "geo_uid": 3521010,
+    "year": 2021,
+    "population": 656480,
+    "updated_at": datetime.now(timezone.utc).isoformat(),
+}
 
     result = (
         supabase.table("fact_demographics")
