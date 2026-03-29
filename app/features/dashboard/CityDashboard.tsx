@@ -10,11 +10,11 @@ import DemographicsSection from "./components/DemographicsSection";
 import { HistorySection } from "./components/HistorySection";
 import AdministrationSection from "./components/AdministrationSection";
 
-import { Municipality } from "./utils/types";
 import { formatDate } from "@/app/lib/utils";
+import type { MunicipalityDashboardData } from "@/app/lib/supabase/municipalities";
 
 interface DashboardProps {
-  initialMunicipality: Municipality;
+  initialMunicipality: MunicipalityDashboardData;
 }
 
 export const CityDashboard = ({ initialMunicipality }: DashboardProps) => {
@@ -26,49 +26,49 @@ export const CityDashboard = ({ initialMunicipality }: DashboardProps) => {
     switch (activeSection) {
       case "overview":
         return (
-    <OverviewSection
-      municipalityid={municipality.id}
-      budgetData={[
-        { month: "Jan", planned: 0, actual: 0 },
-        { month: "Feb", planned: 0, actual: 0 },
-        { month: "Mar", planned: 0, actual: 0 },
-      ]}
-      kpis={[
-        {
-          name: "Budget Utilization",
-          current: 0,
-          target: 0,
-          trend: "stable",
-          unit: "%",
-          color: "primary",
-        },
-        {
-          name: "Service Uptime",
-          current: 0,
-          target: 0,
-          trend: "stable",
-          unit: "%",
-          color: "success",
-        },
-      ]}
-    />
-  );
+          <OverviewSection
+            municipalityid={municipality.id}
+            budgetData={[
+              { month: "Jan", planned: 0, actual: 0 },
+              { month: "Feb", planned: 0, actual: 0 },
+              { month: "Mar", planned: 0, actual: 0 },
+            ]}
+            kpis={[
+              {
+                name: "Budget Utilization",
+                current: 0,
+                target: 0,
+                trend: "stable",
+                unit: "%",
+                color: "primary",
+              },
+              {
+                name: "Service Uptime",
+                current: 0,
+                target: 0,
+                trend: "stable",
+                unit: "%",
+                color: "success",
+              },
+            ]}
+          />
+        );
 
       case "financials":
         return <FinancialsSection />;
 
       case "demographics":
         return (
-  <DemographicsSection
-    demographicsData={[
-      { ageGroup: "0-14", population: 0, percentage: 0 },
-      { ageGroup: "15-24", population: 0, percentage: 0 },
-      { ageGroup: "25-44", population: 0, percentage: 0 },
-      { ageGroup: "45-64", population: 0, percentage: 0 },
-      { ageGroup: "65+", population: 0, percentage: 0 },
-    ]}
-  />
-);
+          <DemographicsSection
+            demographicsData={
+              municipality.demographicsData ?? [
+                { ageGroup: "0-14", population: 0, percentage: 0 },
+                { ageGroup: "15-64", population: 0, percentage: 0 },
+                { ageGroup: "65+", population: 0, percentage: 0 },
+              ]
+            }
+          />
+        );
 
       case "history":
         return <HistorySection />;

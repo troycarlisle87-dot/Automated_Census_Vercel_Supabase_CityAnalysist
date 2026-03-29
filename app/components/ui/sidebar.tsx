@@ -4,8 +4,8 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { cn } from "@/lib/utils"
+import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/app/lib/utils";
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger  } from "./tooltip"
 import { Button } from "./button"
 import { Input } from "./input"
