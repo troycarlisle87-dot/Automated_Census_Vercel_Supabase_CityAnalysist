@@ -78,7 +78,22 @@ YEAR_CONFIGS = [
 
 
 REGIONS = {
-    "CSD": ["3521010", "3529006", "3530013", "3530016"]
+    "CSD": [
+        "3521010",  # Brampton
+        "3529006",  # Brantford
+        "3530013",  # Kitchener
+        "3530016",  # Waterloo
+        "3519036",  # Markham
+        "3519038",  # Richmond Hill
+        "3519044",  # Whitchurch-Stouffville
+        "3519046",  # Aurora
+        "3519048",  # Newmarket
+        "3519049",  # King
+        "3519054",  # East Gwillimbury
+        "3520005",  # Toronto
+        "3521005",  # Mississauga
+        "3519028",  # Vaughan
+    ]
 }
 
 

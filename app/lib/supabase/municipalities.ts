@@ -37,7 +37,7 @@ export async function getMunicipalityBySlug(
   slug: string
 ): Promise<MunicipalityDashboardData | null> {
   const { data: municipalityRow, error: municipalityError } = await supabase
-    .from("muncipalities")
+    .from("municipalities")
     .select("*")
     .ilike("slug", slug)
     .maybeSingle();
