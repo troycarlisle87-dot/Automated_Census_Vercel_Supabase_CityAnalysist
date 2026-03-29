@@ -1,6 +1,6 @@
 # sync_census.py
 
-
+from dotenv import load_dotenv
 import os
 from datetime import datetime, timezone
 
@@ -274,9 +274,10 @@ def build_row(config: dict, census_row) -> dict:
 
 
 def main() -> None:
-    supabase_url = os.environ["SUPABASE_URL"]
+    load_dotenv(".env.local")
+    supabase_url = os.environ["NEXT_PUBLIC_SUPABASE_URL"]
     supabase_secret_key = os.environ["SUPABASE_SECRET_KEY"]
-    census_api_key = os.environ["CANCENSUS_API_KEY"]
+    census_api_key = os.environ["CENSUS_API_KEY"]
 
     supabase: Client = create_client(supabase_url, supabase_secret_key)
 

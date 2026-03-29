@@ -1,3 +1,17 @@
+*/
+-------------------------------------------------------
+sync_census.py
+-------------------------------------------------------
+Author: LLoyd Nsambu
+ID: 6969696969
+Email: Nsam6969@mylaurier.ca
+Date of last update: 2026-03-29
+Feature list:
+Supported Vectors: Age, Population, income(limited)
+Supported years 2011-2021
+.env variables: Supabase_url,supabase_secret_key,Census_api_key
+-------------------------------------------------------
+*/
 import { createClient } from "@supabase/supabase-js";
 import type { Municipality } from "@/app/features/dashboard/utils/types";
 
